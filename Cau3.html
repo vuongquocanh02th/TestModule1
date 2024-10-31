@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tinh so ngay va nam nhuan</title>
+</head>
+<body>
+    <script>
+        function getDaysInMonth(month, year) {
+            // Check Valid
+            if (month < 1 || month > 12) {
+                return "Thang khong hop le!";
+            }
+
+            // Tinh so ngay
+            if (month === 2) {
+                // Check nam nhuan
+                if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                    alert(`Nam ${year} la nam nhuan`)
+                    return 29; // Nam nhuan
+                } else {
+                    alert(`Nam ${year} khong phai nam nhuan`)
+                    return 28; // Nam khong nhuan
+                }
+            }
+
+            //
+            return new Date(year, month, 0).getDate();
+        }
+
+        // Nhap thang va nam
+        function inputMonthYear() {
+            const input = prompt("Nhap thang va nam theo format MM/yyyy:");
+            const [month, year] = input.split('/').map(Number);
+
+            if (isNaN(month) || isNaN(year) || input.split('/').length !== 2) {
+                alert("Format khong hop le! Nhap lai theo format MM/yyyy.");
+                return;
+            }
+
+            const days = getDaysInMonth(month, year);
+            alert(`Thang ${month} nam ${year} co ${days} ngay.`);
+        }
+        inputMonthYear();
+    </script>
+</body>
+</html>

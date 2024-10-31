@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trung binh cong cac so trong mang chia het cho 3</title>
+</head>
+<body>
+  <script>
+    function inputArr() {
+        let n = parseInt( prompt('Nhap so phan tu mang') );
+        while ( n <= 0 || n > 50) {
+            n = +prompt('So phan tu nam trong khoang tu 1 - 50, vui long nhap lai');
+        }
+        let array = [];
+        for ( let i = 0; i < n; i++ ) {
+            let num = parseInt( prompt(`Nhap phan tu thu ${i+1}`) );
+            array.push( num );
+        }
+        return array;
+    }
+
+    function avgArrDivisible3(array) {
+        let sum = 0;
+        let arrChiaHet3 = [];
+        array.forEach(index => {
+            if(index % 3 === 0) {
+                arrChiaHet3.push(index);
+                sum += index;
+            }
+        });
+        return sum/arrChiaHet3.length;
+    }
+    let arr = inputArr();
+    if ( arr ) {
+        alert(`Danh sach cac phan tu trong mang: ${arr}`);
+        let tbcSoChiaHet3 = avgArrDivisible3(arr);
+        alert(`Trung binh cong cac so chia het cho 3 la: ${tbcSoChiaHet3}`);
+    }
+
+  </script>
+</body>
+</html>
